@@ -1,0 +1,277 @@
+{%  extends 'enrollment/student/new/template.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container">
+        <div class="row">
+            <div class="card image fluid" style="width: 1100rem;">
+                <img src="{% static 'images/base_image/logs.jpeg' %}">
+                <div class="card text-center">
+                    <div class="card-header">
+                        <h5><b>UPDATE PERSONAL INFORMATION</b></h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <form method="POST" action="">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col align-self-start">
+                    <h4><b>STUDENT PERSONAL DATA:</b></h4>
+                    <br>
+                </div>
+                <div class="col align-self-last">
+                    {{date_created}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="input-group input-group-sm mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default">Last Name</span>
+                        </div>
+                        {{form.last_name}}
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="input-group input-group-sm mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default">First Name</span>
+                        </div>
+                        {{form.first_name}}
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="input-group input-group-sm mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default">Middle Name</span>
+                        </div>
+                        {{form.middle_name}}
+                    </div>
+                </div>
+            </div>
+            <table class="table table-bordered">
+                <tbody>
+                    <tr>
+                        <td colspan="4">
+                            <div class="input-group input-group-sm mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Address</span>
+                                </div>
+                                {{form.address}}
+                            </div>
+                        </td>
+                        <td colspan="4">
+                            <div class="input-group input-group-sm mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Mobile Number</span>
+                                </div>
+                                {{form.mobile_num}}
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">
+                            <div class="input-group input-group-sm mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Congressional District</span>
+                                </div>
+                                {{form.congressional_district}}
+                            </div>
+                        </td>
+                        <td colspan="4">
+                            <div class="input-group input-group-sm mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Email</span>
+                                </div>
+                                {{form.email}}
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Gender</span>
+                                </div>
+                                {{form.gender}}
+                            </div>
+                        </td>
+                        <td colspan="2">
+                            <div class="input-group input-group-sm mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Birth Place</span>
+                                </div>
+                                {{form.birth_place}}
+                            </div>
+                        </td>
+                        <td colspan="2">
+                            <div class="input-group input-group-sm mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Birth Date</span>
+                                </div>
+                                {{form.birth_date}}
+                            </div>
+                        </td>
+                        <td colspan="2">
+                            <div class="input-group input-group-sm mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Age</span>
+                                </div>
+                                {{form.age}}
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <div class="input-group input-group-sm mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Citizenship</span>
+                                </div>
+                                {{form.citizenship}}
+                            </div>
+                        </td>
+                        <td colspan="2">
+                            <div class="input-group input-group-sm mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Religion</span>
+                                </div>
+                                {{form.religion}}
+                            </div>
+                        </td>
+                        <td colspan="4">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                        <span class="input-group-text" id="inputGroup-sizing-default">Civil Status</span>
+                                </div>
+                                {{form.civil_status}}
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">
+                            <div class="input-group input-group-sm mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Father's Name</span>
+                                </div>
+                                {{form.father_name}}
+                            </div>
+                        </td>
+                        <td colspan="4">
+                            <div class="input-group input-group-sm mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Father's Occupation</span>
+                                </div>
+                                {{form.father_occupation}}
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">
+                            <div class="input-group input-group-sm mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Mother's Name</span>
+                                </div>
+                                {{form.mother_name}}
+                            </div>
+                        </td>
+                        <td colspan="4">
+                            <div class="input-group input-group-sm mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Mother's Occupation</span>
+                                </div>
+                                {{form.mother_occupation}}
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">
+                            <div class="input-group input-group-sm mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Guardian's Name</span>
+                                </div>
+                                {{form.guardian_name}}
+                            </div>
+                        </td>
+                        <td colspan="4">
+                            <div class="input-group input-group-sm mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Guardian Phone Number</span>
+                                </div>
+                                {{form.guardian_phone_number}}
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">
+                            <p class="text-start">Educational Background:</p>
+                        </td>
+                        <td colspan="2">
+                            <p class="text-center">Academic Year:</p>
+                        </td>
+                        <td colspan="2">
+                            <p class="text-center">Honors Received:</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">
+                            <div class="input-group input-group-sm mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Elementary</span>
+                                </div>
+                                {{form.elementary}}
+                            </div>
+                        </td>
+                        <td colspan="2">
+                            {{form.elementary_academic_year}}
+
+                        </td>
+                        <td colspan="2">
+                            {{form.elementary_honors_received}}
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">
+                            <div class="input-group input-group-sm mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">High School </span>
+                                </div>
+                                {{ form.high_school }}
+                            </div>
+                        </td>
+                        <td colspan="2">
+                            {{form.high_school_academic_year }}
+
+                        </td>
+                        <td colspan="2">
+                            {{form.high_school_honors_received }}
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">
+                            <div class="input-group input-group-sm mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">College </span>
+                                </div>
+                                {{form.college }}
+                            </div>
+                        </td>
+                        <td colspan="2">
+                            {{form.college_academic_year}}
+
+                        </td>
+                        <td colspan="2">
+                            {{form.college_honors_received}}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <input class="btn btn-primary btn-lg active" role="button" aria-pressed="true" type="submit" value="Update">
+        </form>
+</div>
+
+{{form.errors}}
+
+{% endblock content %}

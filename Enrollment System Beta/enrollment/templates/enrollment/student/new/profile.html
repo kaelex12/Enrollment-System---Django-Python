@@ -1,0 +1,44 @@
+{%  extends 'enrollment/user/template.html' %}
+{% load static %}
+{% block content %}
+
+<link rel="stylesheet" type="text/css" href="{% static '/css/student/profile.css' %}">
+<div class="card">
+    <a href="{% url 'newStudentPage' %}" onclick="history.go(-1)"><i class="fa fa-arrow-circle-left" style="font-size: 36px;"></i></a>
+    <div class="row">
+        <div class="col">
+            <div class="profile-pic-div">
+                <img src="{{request.user.profile_pic.url}}" id="photo">
+                <input type="file" id="file">
+                <label for="file" id="uploadBtn">Choose Profile</label>
+            </div>
+        </div>
+        <div class="col">
+            <form class="user">
+                <div class="form-group">
+                    <label class="left" for="fn">Full Name: {{user.first_name}} {{user.middle_name}} {{user.last_name}}</label>
+                    
+                </div>
+                <div class="form-group">
+                    <label class="left" for="usr">Username: {{user.email}}</label>
+                    
+                </div>
+                <div class="form-group">
+                    <a href="#" class="btn">
+                        Change Password
+                    </a>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+    <hr>
+    <div class="text-center">
+        <a href="{% url 'newStudentPage' %}" class="btn btn-sucess">
+            Save Changes
+        </a>
+    </div>
+</div>
+<script src="{% static '/js/student/profile.js' %}"></script>
+{% endblock content %}

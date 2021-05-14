@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div class="container">
+      <form method="post" id="personForm" data-year_levels-url="{% url 'ajax_load_year_levels' %}" novalidate>
+        {% csrf_token %}
+            <div class="row">
+                    <table class="table table-bordered">
+                        <tbody>
+                            <tr>
+                                <td colspan="2">
+                                    <div class="input-group input-group-sm mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="inputGroup-sizing-sm">ID Number: {{form.id_number}}</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td colspan="2">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <label class="input-group-text" for="inputGroupSelect01">Course</label>
+                                        </div>
+                                        {{form.course}}
+                                    </div>
+                                </td>
+                                <td colspan="2">
+                                    <div class="input-group input-group-sm mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="inputGroup-sizing-sm">Major: {{form.major}}</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td colspan="2">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <label class="input-group-text" for="inputGroupSelect01">Year Level</label>
+                                        </div>
+                                        {{form.year_level}}
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <div class="input-group input-group-sm mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="inputGroup-sizing-sm">School Year: {{form.school_year}}</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td colspan="2">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <label class="input-group-text" for="inputGroupSelect01">Semester</label>
+                                        </div>
+                                        {{form.semester}}
+                                    </div>
+                                </td>
+                                <td colspan="4">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <label class="input-group-text" for="inputGroupSelect01">Enrolment Status</label>
+                                        </div>
+                                        {{form.enrollment_status}}
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="4">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <label class="input-group-text" for="inputGroupSelect01">Enrolment Status</label>
+                                        </div>
+                                        {{form.student_status}}
+                                    </div>
+                                </td>
+                                <td colspan="4">
+                                    <div class="input-group input-group-sm mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="inputGroup-sizing-sm">Block Section: {{form.block_section}}</span>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+            </div>
+        <button type="submit">Save</button>
+      </form>
+    </div>
+    
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script>
+    $("#id_course").change(function () {
+      var url = $("#personForm").attr("data-year_levels-url");  // get the url of the `load_year_levels` view
+      var courseId = $(this).val();  // get the selected course ID from the HTML input
+
+      $.ajax({                       // initialize an AJAX request
+        url: "{% url 'ajax_load_year_levels' %}",                    // set the url of the request (= localhost:8000/hr/ajax/load-year_levels/)
+        data: {
+          'course': courseId       // add the course id to the GET parameters
+        },
+        success: function (data) {   // `data` is the return of the `load_year_levels` view function
+          $("#id_year_level").html(data);  // replace the contents of the year_level input with the data that came from the server
+        }
+      });
+
+    });
+    // this one is for fetching semester data
+    $("#id_year_level").change(function () { //django-model-form created this id
+      var url = $("#personForm").attr("data-year_levels-url");  // get the url of the `load_year_levels` view
+      var year_levelId = $(this).val();  // get the selected course ID from the HTML input
+
+      $.ajax({                       // initialize an AJAX request
+        url: "{% url 'ajax_load_semesters' %}",                    // set the url of the request (= localhost:8000/hr/ajax/load-year_levels/) person_form.html template has this url var
+        data: {
+          'year_level': year_levelId       // add the course id to the GET parameters
+        },
+        success: function (data) {   // `data` is the return of the `load_year_levels` view function
+          $("#id_semester").html(data);  // replace the contents of the year_level input with the data that came from the server
+        }
+      });
+
+    });
+
+    $("#id_semester").change(function () { //django-model-form created this id
+      var url = $("#personForm").attr("data-semesters-url");  // get the url of the `load_year_levels` view
+      var semesterId = $(this).val();  // get the selected course ID from the HTML input
+
+      $.ajax({                       // initialize an AJAX request
+        url: "{% url 'ajax_load_enrollment_statuses' %}",                    // set the url of the request (= localhost:8000/hr/ajax/load-year_levels/) person_form.html template has this url var
+        data: {
+          'semester': semesterId       // add the course id to the GET parameters
+        },
+        success: function (data) {   // `data` is the return of the `load_year_levels` view function
+          $("#id_enrollment_status").html(data);  // replace the contents of the year_level input with the data that came from the server
+        }
+      });
+
+    });
+  </script>
+
+</body>
+</html>

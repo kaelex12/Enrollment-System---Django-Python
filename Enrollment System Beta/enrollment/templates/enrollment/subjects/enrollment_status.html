@@ -1,0 +1,4 @@
+<option value="">---------</option>
+{% for enrollment_status in enrollment_statuses %}
+<option value="{{ enrollment_status.pk }}">{{ enrollment_status.name }}</option>
+{% endfor %}

@@ -1,0 +1,509 @@
+{%  extends 'enrollment/student/new/template.html' %}
+
+{% block content %}
+
+    <div class="container">
+        
+        <form method = "POST" data-year_levels-url="{% url 'ajax_load_year_levels' %}" novalidate>
+            {% csrf_token %}
+            {% for i in subjects %}
+            <div class="row">
+                    <table class="table table-bordered">
+                        <tbody>
+                            <tr>
+                                <td colspan="2">
+                                    <div class="input-group input-group-sm mb-3">
+                                        <div class="input-group-prepend">
+                                            <span>ID Number: {{i.id_number}}</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td colspan="2">
+                                    <div class="input-group input-group-sm mb-3">
+                                        <div class="input-group-prepend">
+                                            <span>Course: {{i.course}}</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td colspan="2">
+                                    <div class="input-group input-group-sm mb-3">
+                                        <div class="input-group-prepend">
+                                            <span>Major: {{i.major}}</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td colspan="2">
+                                    <div class="input-group input-group-sm mb-3">
+                                        <div class="input-group-prepend">
+                                            <span>Year Level: {{i.year_level}}</span>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <div class="input-group input-group-sm mb-3">
+                                        <div class="input-group-prepend">
+                                            <span>School Year: {{i.school_year}}</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td colspan="2">
+                                    <div class="input-group input-group-sm mb-3">
+                                        <div class="input-group-prepend">
+                                            <span>Semester: {{i.semester}}</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td colspan="4">
+                                    <div class="input-group input-group-sm mb-3">
+                                        <div class="input-group-prepend">
+                                            <span>Enrolment Status: {{i.enrollment_status}}</span>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="4">
+                                    <div class="input-group input-group-sm mb-3">
+                                        <div class="input-group-prepend">
+                                            <span>Student Status: {{i.student_status}}</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td colspan="4">
+                                    <div class="input-group input-group-sm mb-3">
+                                        <div class="input-group-prepend">
+                                            <span>Block Section: {{i.block_section}}</span>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                    </table>
+                    <table class="table table-bordered">
+                    <tbody>
+                        <tr>
+                            <th colspan="1">
+                                <b><p class="text-center">Select</p></b>
+                            </th>
+                            <th colspan="1">
+                                <b><p class="text-center">MIS Code</p></b>
+                            </th>
+                            <th colspan="1">
+                                <b><p class="text-center">Subject Code</p></b>
+                            </th>
+                            <th colspan="2">
+                                <b><p class="text-center">Descriptive Title</p></b>
+                            </th>
+                            <th colspan="1">
+                                <b><p class="text-center">Time</p></b>
+                            </th>
+                            <th colspan="1">
+                                <b><p class="text-center">Day</p></b>
+                            </th>
+                            <th colspan="1">
+                                <b><p class="text-center">Room</p></b>
+                            </th>
+                            <th colspan="1">
+                                <b><p class="text-center">Unit</p></b>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_code1.selected}}
+                            </td>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_code1.mis_code}}
+                            </td>
+                            <td colspan="2">
+                                {{i.enrollment_status.mis_code1.subject.course_code}}
+                            </td>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_code1.subject.descriptive_title}}
+                            </td>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_code1.time}}
+                            </td>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_code1.day}}
+                            </td>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_code1.room}}
+                            </td>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_code1.subject.unit}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_code2.selected}}
+                            </td>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_code2.mis_code}}
+                            </td>
+                            <td colspan="2">
+                                {{i.enrollment_status.mis_code2.subject.course_code}}
+                            </td>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_code2.subject.descriptive_title}}
+                            </td>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_code2.time}}
+                            </td>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_code2.day}}
+                            </td>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_code2.room}}
+                            </td>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_code2.subject.unit}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_code3.selected}}
+                            </td>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_code3.mis_code}}
+                            </td>
+                            <td colspan="2">
+                                {{i.enrollment_status.mis_code3.subject.course_code}}
+                            </td>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_code3.subject.descriptive_title}}
+                            </td>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_code3.time}}
+                            </td>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_code3.day}}
+                            </td>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_code3.room}}
+                            </td>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_code3.subject.unit}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_code4.selected}}
+                            </td>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_code4.mis_code}}
+                            </td>
+                            <td colspan="2">
+                                {{i.enrollment_status.mis_code4.subject.course_code}}
+                            </td>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_code4.subject.descriptive_title}}
+                            </td>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_code4.time}}
+                            </td>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_code4.day}}
+                            </td>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_code4.room}}
+                            </td>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_code4.subject.unit}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_code5.selected}}
+                            </td>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_code5.mis_code}}
+                            </td>
+                            <td colspan="2">
+                                {{i.enrollment_status.mis_code5.subject.course_code}}
+                            </td>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_code5.subject.descriptive_title}}
+                            </td>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_code5.time}}
+                            </td>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_code5.day}}
+                            </td>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_code5.room}}
+                            </td>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_code5.subject.unit}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_code6.selected}}
+                            </td>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_code6.mis_code}}
+                            </td>
+                            <td colspan="2">
+                                {{i.enrollment_status.mis_code6.subject.course_code}}
+                            </td>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_code6.subject.descriptive_title}}
+                            </td>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_code6.time}}
+                            </td>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_code6.day}}
+                            </td>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_code6.room}}
+                            </td>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_code6.subject.unit}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_code7.selected}}
+                            </td>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_code7.mis_code}}
+                            </td>
+                            <td colspan="2">
+                                {{i.enrollment_status.mis_code7.subject.course_code}}
+                            </td>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_code7.subject.descriptive_title}}
+                            </td>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_code7.time}}
+                            </td>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_code7.day}}
+                            </td>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_code7.room}}
+                            </td>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_code7.subject.unit}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_code8.selected}}
+                            </td>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_code8.mis_code}}
+                            </td>
+                            <td colspan="2">
+                                {{i.enrollment_status.mis_code8.subject.course_code}}
+                            </td>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_code8.subject.descriptive_title}}
+                            </td>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_code8.time}}
+                            </td>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_code8.day}}
+                            </td>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_code8.room}}
+                            </td>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_code8.subject.unit}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_code9.selected}}
+                            </td>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_code9.mis_code}}
+                            </td>
+                            <td colspan="2">
+                                {{i.enrollment_status.mis_code9.subject.course_code}}
+                            </td>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_code9.subject.descriptive_title}}
+                            </td>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_code9.time}}
+                            </td>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_code9.day}}
+                            </td>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_code9.room}}
+                            </td>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_code9.subject.unit}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_codeA.selected}}
+                            </td>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_codeA.mis_code}}
+                            </td>
+                            <td colspan="2">
+                                {{i.enrollment_status.mis_codeA.subject.course_code}}
+                            </td>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_codeA.subject.descriptive_title}}
+                            </td>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_codeA.time}}
+                            </td>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_codeA.day}}
+                            </td>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_codeA.room}}
+                            </td>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_codeA.subject.unit}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_codeB.selected}}
+                            </td>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_codeB.mis_code}}
+                            </td>
+                            <td colspan="2">
+                                {{i.enrollment_status.mis_codeB.subject.course_code}}
+                            </td>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_codeB.subject.descriptive_title}}
+                            </td>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_codeB.time}}
+                            </td>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_codeB.day}}
+                            </td>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_codeB.room}}
+                            </td>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_codeB.subject.unit}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_codeC.selected}}
+                            </td>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_codeC.mis_code}}
+                            </td>
+                            <td colspan="2">
+                                {{i.enrollment_status.mis_codeC.subject.course_code}}
+                            </td>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_codeC.subject.descriptive_title}}
+                            </td>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_codeC.time}}
+                            </td>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_codeC.day}}
+                            </td>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_codeC.room}}
+                            </td>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_codeC.subject.unit}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_codeD.selected}}
+                            </td>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_codeD.mis_code}}
+                            </td>
+                            <td colspan="2">
+                                {{i.enrollment_status.mis_codeD.subject.course_code}}
+                            </td>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_codeD.subject.descriptive_title}}
+                            </td>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_codeD.time}}
+                            </td>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_codeD.day}}
+                            </td>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_codeD.room}}
+                            </td>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_codeD.subject.unit}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_codeE.selected}}
+                            </td>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_codeE.mis_code}}
+                            </td>
+                            <td colspan="2">
+                                {{i.enrollment_status.mis_codeE.subject.course_code}}
+                            </td>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_codeE.subject.descriptive_title}}
+                            </td>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_codeE.time}}
+                            </td>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_codeE.day}}
+                            </td>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_codeE.room}}
+                            </td>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_codeE.subject.unit}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_codeF.selected}}
+                            </td>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_codeF.mis_code}}
+                            </td>
+                            <td colspan="2">
+                                {{i.enrollment_status.mis_codeF.subject.course_code}}
+                            </td>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_codeF.subject.descriptive_title}}
+                            </td>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_codeF.time}}
+                            </td>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_codeF.day}}
+                            </td>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_codeF.room}}
+                            </td>
+                            <td colspan="1">
+                                {{i.enrollment_status.mis_codeF.subject.unit}}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            {% endfor %}
+        </form>
+    </div>
+
+{% endblock %}
